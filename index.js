@@ -94,10 +94,14 @@ function nextSequence()
     randomNumber = Math.floor(tmp);
 
     //Select a color in the array
-    gamePattern.push(buttonColours[randomNumber]);
     randomChosenColour = buttonColours[randomNumber];// 
+    gamePattern.push(buttonColours[randomNumber]);
 
-    $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
+   // $("#" + randomChosenColour).fadeOut(200).fadeIn(200);
+    $("." + randomChosenColour).addClass("animate").dequeue().delay(200).queue(function () {
+        $("." + randomChosenColour).removeClass("animate");
+    })
+
     playSound(randomChosenColour);
 
     level += 1;
